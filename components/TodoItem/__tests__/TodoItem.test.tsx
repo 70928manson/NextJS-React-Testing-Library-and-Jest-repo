@@ -26,7 +26,7 @@ describe("AddTodo", () => {
             render(<TodoItem todo={mockTodo} setTodos={mockSetTodos} />); // ARRANGE
 
             //ACT
-            const label = screen.getByTestId('todo-item');
+            const label = screen.getByTestId('todo-item');  //get DOM中data-testid
 
             expect(label).toBeInTheDocument();// ASSERT
         })
