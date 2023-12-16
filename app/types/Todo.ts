@@ -1,6 +1,6 @@
 export type TTodo = {
     userId: number,
     id: number,
-    title: number,
+    title: string,
     completed: boolean,
 }
