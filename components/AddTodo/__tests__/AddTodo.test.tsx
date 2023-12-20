@@ -69,7 +69,7 @@ describe('AddTodo', () => {
             render(<AddTodo setTodos={mockSetTodos} />); // ARRANGE
 
             const input = screen.getByPlaceholderText('New Todo'); //ACT
-            await userEvent.type(input, 'hey there')
+            await userEvent.type(input, 'hey there');
             const button = screen.getByRole('button', {
                 name: 'Submit'
             });
