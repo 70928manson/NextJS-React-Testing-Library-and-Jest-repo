@@ -1,9 +1,9 @@
 "use client"
 
-import TodoList from "@/components/TodoList/TodoList"
-import AddTodo from "@/components/AddTodo/AddTodo"
-import { useState } from "react"
-import type { TTodo } from "./types/Todo"
+import TodoList from "@/components/TodoList/TodoList";
+import AddTodo from "@/components/AddTodo/AddTodo";
+import { useState } from "react";
+import type { TTodo } from "./types/Todo";
 
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
       "completed": false,
       "id": 4,
     }
-  ])
+  ]);
 
   return (
     <>
