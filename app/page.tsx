@@ -10,25 +10,25 @@ export default function Home() {
   const [todos, setTodos] = useState<TTodo[]>([
     {
       "userId": 1,
-      "title": "Wave hello! 👋",
+      "title": "Hello world~",
       "completed": false,
       "id": 1
     },
     {
       "userId": 1,
-      "title": "Get Coffee ☕☕☕",
+      "title": "Go to Tainan",
       "completed": false,
       "id": 2
     },
     {
       "userId": 1,
-      "title": "Go to Work ⚒",
+      "title": "NCKU at the south",
       "completed": false,
       "id": 3
     },
     {
       "userId": 1,
-      "title": "Write Code 💻",
+      "title": "Cat walk in street",
       "completed": false,
       "id": 4,
     }
