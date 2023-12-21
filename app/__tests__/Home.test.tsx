@@ -1,30 +1,49 @@
 import { render, screen } from '@testing-library/react';
-import Home from '@/app/page';
+import userEvent from '@testing-library/user-event';
+import Home from '../page';
 
 describe('Home', () => {
-    it('should have Docs text', () => {
-        render(<Home />); //Arrange
 
-        const myElement = screen.getByText('Docs'); //Act
+    it('should add a new todo', async () => {
+        render(<Home />) // ARRANGE
 
-        expect(myElement).toBeInTheDocument();
-    });
+        // ACT
+        const input = screen.getByPlaceholderText('New Todo');
+        await userEvent.type(input, 'My new todo');
+        expect(input).toHaveValue('My new todo'); // ASSERT
 
-    it('should contain the text "information"', () => {
-        render(<Home />); //Arrange
+        // ACT
+        const button = screen.getByRole('button', {
+            name: 'Submit'
+        });
+        await userEvent.click(button);
+        expect(input).toHaveValue(""); // ASSERT 
 
-        const myElement = screen.getByText(/information/i); //Act  //case insensitive
+        const data = await screen.findByText('My new todo');
+        expect(data).toHaveTextContent('My new todo');
+    })
 
-        expect(myElement).toBeInTheDocument();
-    });
+    it('should update a todo', async () => {
+        render(<Home />) // ARRANGE
 
-    it('should have a heading', () => {
-        render(<Home />); //Arrange
+        // ACT
+        const checkbox = screen.getAllByRole('checkbox')[0] as HTMLInputElement;
+        expect(checkbox).not.toBeChecked();
+        await userEvent.click(checkbox);
+        expect(checkbox).toBeChecked(); // ASSERT 
 
-        const myElement = screen.getByRole('heading', {
-            name: 'Learn'
-        }); //Act  //case insensitive
+    })
 
-        expect(myElement).toBeInTheDocument();
-    });
+    it('should delete a todo', async () => {
+        render(<Home />); // ARRANGE
+
+        const todoText = screen.queryByText('Cat walk in street');
+        expect(todoText).toBeInTheDocument(); // ASSERT 
+
+        // ACT
+        const button = screen.getAllByTestId('delete-button')[0];
+        await userEvent.click(button);
+
+        expect(todoText).not.toBeInTheDocument(); // ASSERT 
+    })
 })
